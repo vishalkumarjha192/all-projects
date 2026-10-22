@@ -1,0 +1,22 @@
+DATA CLEANING REPORT
+====================
+Input file: students_raw.csv
+Output file: students_cleaned.csv
+
+Initial rows: 12
+Rows after removing exact duplicates: 11
+Exact duplicate rows removed: 1
+Missing cells before cleaning: 3
+Missing cells after cleaning: 0
+
+Cleaning steps:
+- Removed exact duplicate rows
+- Trimmed whitespace and standardized names, email addresses, and categories
+- Converted age, score, and attendance to numeric values
+- Removed percent signs from attendance
+- Set out-of-range age, score, and attendance values to missing
+- Imputed missing numeric values using each column's median
+- Added email-format and duplicate-student-ID validation flags
+
+Note: This is a learning example using synthetic data. Review imputation and
+business rules with a project supervisor before using them on real data.

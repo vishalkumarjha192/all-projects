@@ -1,0 +1,13 @@
+Student_ID,Name,Age,Gender,Course,Attendance,Score,Email
+S001,Asha Sharma,20,Female,Data Analytics,92%,88,asha@example.com
+S002,rahul verma ,21,M,data analytics,85%,76,rahul@example.com
+S003,Neha Singh,twenty,Female,Business,78%,91,neha@example.com
+S004,Amit Kumar,22,Male,Business,105%,67,amit@example.com
+S005,Priya Das,,F,IT,88%,82,priya@example.com
+S006,Kabir Khan,19,Male,IT,90%,,kabir@example.com
+S007,Meera Patel,20,female,Data Analytics,95%,94,meera@example.com
+S008,Rohan Gupta,21,Male,Business,81%,73,rohan@example.com
+S008,Rohan Gupta,21,Male,Business,81%,73,rohan@example.com
+S009,Sana Ali,23,Female,IT,87%,89,sana@example.com
+S010,Dev Roy,20,Other,data analytics,76%,105,dev@example.com
+S011,Ishita Jain,22,Female,Business,,80,ishita@example.com
