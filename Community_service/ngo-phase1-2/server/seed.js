@@ -29,18 +29,18 @@ async function run() {
   }));
 
   // Users (create() so passwords are hashed by the model hook)
-  const admin = await M.User.create({ name: 'Anita Sharma', email: 'admin@ngo.org', password: PASSWORD, role: 'admin', status: 'active', phone: '9810000001', lastLogin: ago(0) });
+  const admin = await M.User.create({ name: 'Vishal Kumar Jha', email: 'admin@ngo.org', password: PASSWORD, role: 'admin', status: 'active', phone: '9810000001', lastLogin: ago(0) });
   const managerA = await M.User.create({
-    name: 'Meera Kapoor', email: 'meera.manager@ngo.org', password: PASSWORD, role: 'manager', status: 'active', phone: '9810000002',
+    name: 'Aryan Yadav', email: 'aryan.manager@ngo.org', password: PASSWORD, role: 'manager', status: 'active', phone: '9810000002',
     permissions: ['tasks.view', 'tasks.create', 'tasks.edit', 'tasks.assign', 'volunteers.view', 'volunteers.edit', 'food.view', 'food.create', 'food.edit', 'food.distribute', 'events.view', 'events.create', 'events.edit'],
     dashboardModules: ['tasks', 'volunteers', 'food', 'events'],
   });
   const managerB = await M.User.create({
-    name: 'Rahul Verma', email: 'rahul.manager@ngo.org', password: PASSWORD, role: 'manager', status: 'active', phone: '9810000003',
+    name: 'Sumit', email: 'sumit.manager@ngo.org', password: PASSWORD, role: 'manager', status: 'active', phone: '9810000003',
     permissions: ['students.view', 'students.create', 'students.edit', 'beneficiaries.view', 'beneficiaries.create', 'beneficiaries.edit', 'tasks.view', 'tasks.create', 'tasks.edit'],
     dashboardModules: ['students', 'beneficiaries', 'tasks'],
   });
-  const volNames = ['Priya Nair', 'Arjun Mehta', 'Sneha Iyer', 'Karan Singh', 'Divya Rao'];
+  const volNames = ['Manas Jain', 'Ayush', 'Bharat', 'Ashish', 'Priyanshu', 'Varun', 'Bhavya Anand', 'Aman CR', 'Aman'];
   const volUsers = [];
   for (let i = 0; i < volNames.length; i += 1) {
     volUsers.push(await M.User.create({
@@ -67,7 +67,7 @@ async function run() {
   })));
 
   // Students
-  const studentNames = ['Aarav Kumar', 'Isha Gupta', 'Rohan Yadav', 'Ananya Das', 'Vivek Chauhan', 'Pooja Rani', 'Imran Khan', 'Simran Kaur', 'Deepak Meena', 'Kavya Joshi'];
+  const studentNames = ['Arnav Kumar', 'ishu', 'Abhi', 'Rahul', 'Vivek', 'Pooja', 'varun', 'Ashish', 'Deepak Meena', 'Kavya Joshi'];
   await M.Student.insertMany(studentNames.map((n, i) => ({
     name: n, age: 8 + (i % 7), gender: i % 2 ? 'male' : 'female', school: pick(['Govt. Primary School', 'Govt. Senior Secondary School'], i), class: String(3 + (i % 8)),
     parentGuardian: { name: `Guardian of ${n.split(' ')[0]}`, relation: i % 2 ? 'Father' : 'Mother', phone: `97000000${i}0` },
@@ -154,7 +154,7 @@ async function run() {
   ]);
 
   // Organization + website content (Phase 6 CMS reads/writes these)
-  await M.Organization.create({ name: 'Asha Kiran Foundation', tagline: 'Food, education and care for every child', email: 'hello@ashakiran.org', phone: '+91 98100 00000', address: 'Sohna Road, Gurugram, Haryana' });
+  await M.Organization.create({ name: 'Vishal Kumar Jha Foundation', tagline: 'Food, education and care for every child', email: 'hello@vishalkumarjha.org', phone: '+91 9871470000', address: 'Sohna Road, Gurugram, Haryana' });
   await M.WebsiteContent.insertMany([
     { section: 'hero', content: { title: 'Every child deserves a full plate and a full classroom', description: 'We serve hot meals, run learning camps and support families across Gurugram.' } },
     { section: 'mission', content: { text: 'To make sure no child in our neighbourhoods goes to bed hungry or misses school.' } },
@@ -162,9 +162,9 @@ async function run() {
 
   console.log('\nSeed complete. Demo accounts (password for all: ' + PASSWORD + '):');
   console.log('  admin    admin@ngo.org');
-  console.log('  manager  meera.manager@ngo.org  (tasks, volunteers, food, events)');
-  console.log('  manager  rahul.manager@ngo.org  (students, beneficiaries, tasks)');
-  console.log('  volunteer volunteer1@ngo.org ... volunteer4@ngo.org  (volunteer5 is pending approval)\n');
+  console.log('  manager  aryan.manager@ngo.org  (tasks, volunteers, food, events)');
+  console.log('  manager  sumit.manager@ngo.org  (students, beneficiaries, tasks)');
+  console.log('  volunteer volunteer1@ngo.org ... volunteer9@ngo.org  (volunteer5 is pending approval)\n');
   console.log('Modules available:', Object.keys(MODULES).length, 'permission groups');
 }
 

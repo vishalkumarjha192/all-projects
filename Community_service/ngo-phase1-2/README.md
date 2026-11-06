@@ -1,23 +1,34 @@
 # NGO Management System
 
-A MERN application for running an NGO: volunteers, managers, students, beneficiaries, donations, food, resources, tasks, events and a public website, with role-based dashboards and granular permissions.
+A MERN application for running an NGO: volunteers, managers, students, beneficiaries, donations, food, resources, tasks, events and a public website, with role-based dashboards and granular permissions. It was built in phases; each phase is a working snapshot of the whole project.
+
+> **This folder is the snapshot for Phases 1-2.** It runs on its own: install it, seed it and log in with the demo accounts below.
+
+## What is in this snapshot
+
+- Project structure, MongoDB connection and all 17 Mongoose models
+- Register, login, logout, forgot and reset password, with JWT
+- Role and permission middleware, protected routes
+- Admin screens for Users and Permissions
+- Seed script with linked demo data
+- The manager and volunteer dashboards are simple welcome pages in this snapshot
 
 ## Build status
 
 | Phase | Scope | Status |
 |---|---|---|
 | 1 | Project structure, MongoDB config, all 17 Mongoose models, seed data, `.env.example` | Done |
-| 2 | Register, login, logout, forgot/reset password, JWT, role + permission middleware, protected routes, admin Users and Permissions screens | Done |
-| 3 | Admin, manager and volunteer dashboards with live stats and charts | Next |
-| 4 | Core modules (volunteers, students, beneficiaries, donations, food, resources, tasks, events, programs) | Planned |
-| 5 | Notifications, activity logs, reports (CSV/PDF) | Planned |
-| 6 | Public website, CMS, public volunteer and donation forms | Planned |
-| 7 | Final testing pass and docs | Planned |
+| 2 | Register, login, logout, forgot/reset password, JWT, role + permission middleware, protected routes, admin Users and Permissions screens | Done (**this snapshot**) |
+| 3 | Admin, manager and volunteer dashboards with live stats and charts | Planned |
+| 4 | Core modules: volunteers, students, beneficiaries (batch 1); donations, food, resources (batch 2); tasks, events, programs (batch 3) | Planned |
+| 5 | Notifications (bell, page, hourly alerts), activity log, reports with CSV and PDF export | Planned |
+| 6 | Public website, website CMS, announcements, public volunteer application and donation inquiry forms | Planned |
+| 7 | Route and permission audit, clean-install check, tests added to the project, final docs | Planned |
 
 ## Tech stack
 
-- Frontend: React 18, Vite, React Router, Tailwind CSS, Axios, React Hook Form, Recharts, Lucide React
-- Backend: Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Multer
+- Frontend: React 18, Vite, React Router, Tailwind CSS, Axios, React Hook Form, React Hot Toast, Recharts, Lucide React
+- Backend: Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Multer, express-validator, Helmet, express-rate-limit
 
 ## Installation
 
@@ -36,6 +47,8 @@ cd client
 npm install
 npm run dev                 # App on http://localhost:5173
 ```
+
+If MongoDB is not on `127.0.0.1:27017`, edit `MONGO_URI` in `server/.env` first. Then open http://localhost:5173/login and sign in with a demo account below.
 
 ## Environment variables (`server/.env`)
 
@@ -56,15 +69,16 @@ In production set `VITE_API_URL` in `client/.env` to your API address, then run 
 
 Password for all: `Password@123`
 
-| Role | Email | Notes |
-|---|---|---|
-| Admin | admin@ngo.org | Full access |
-| Manager | meera.manager@ngo.org | Tasks, volunteers, food, events |
-| Manager | rahul.manager@ngo.org | Students, beneficiaries, tasks |
-| Volunteer | volunteer1@ngo.org to volunteer4@ngo.org | Active |
-| Volunteer | volunteer5@ngo.org | Pending approval (cannot log in until an admin approves) |
+| Role | Name | Email | Notes |
+|---|---|---|---|
+| Admin | Vishal Kumar Jha | admin@ngo.org | Full access |
+| Manager | Aryan Yadav | aryan.manager@ngo.org | Tasks, volunteers, food, events |
+| Manager | Sumit | sumit.manager@ngo.org | Students, beneficiaries, tasks |
+| Volunteer | Manas Jain, Ayush, Bharat, Ashish, Varun, Bhavya Anand, Aman CR, Aman | volunteer1@ngo.org to volunteer9@ngo.org (except volunteer5) | Active |
+| Volunteer | Priyanshu | volunteer5@ngo.org | Pending approval (cannot log in until an admin approves) |
 
-`npm run seed` wipes the NGO collections first. It refuses to run in production unless you add `--force`.
+`npm run seed` wipes the NGO collections first and then loads linked demo records (volunteers, students, beneficiaries, donations, food, resources, programs, events and tasks). It refuses to run in production unless you add `--force`.
+These are sample accounts with a shared password: never use them on a real deployment.
 
 ## How authorization works
 
@@ -137,3 +151,7 @@ client/src/
 - Dashboards for manager and volunteer are simple welcome pages until Phase 3
 - Only Users and Permissions modules exist in the sidebar so far; each new module appears automatically when its navigation entry and API are added
 - Uploads: Multer middleware with type and size validation is ready; upload endpoints arrive with the modules that use them
+
+## License
+
+No license file is included yet. Add one (for example MIT) before making the repository public if you want others to reuse the code.
